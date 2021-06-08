@@ -1,15 +1,36 @@
+tool
 extends Container
 
-export (float, 0, 1) var root: float
-export (float, 0, 1) var progress: float
+#export (float, 0, 1) var root: float
+#export (float, 0, 1) var progress: float
 #export(float, 0, 180) var min_angle: float;
 #export(float, 0, 90) var max_angle: float;
-export (float, 0, 90) var max_angle: float = 45;
-export (float, 0, 100) var circle_center_offset: float
-export (float, 0, 1) var padding: float
-export var child_size: Vector2
+export (float, 0, 90) var max_angle: float = 45 setget _set_max_angle
+export (float, 0.01, 1) var bow_spacing: float = .2 setget _set_bow_spacing
+export (float, 0, .49) var padding: float = .1 setget _set_padding
+export var child_size: Vector2 = Vector2(50, 50) setget _set_child_size
 enum ORDER { LTR, RTL }
-export (ORDER) var order
+#export (ORDER) var order
+
+
+func _set_max_angle(value: float):
+	max_angle = value
+	_resort()
+
+
+func _set_bow_spacing(value: float):
+	bow_spacing = value
+	_resort()
+
+
+func _set_padding(value: float):
+	padding = value
+	_resort()
+
+
+func _set_child_size(value: Vector2):
+	child_size = value
+	_resort()
 
 
 func _ready():
@@ -25,16 +46,28 @@ func _resort():
 	if children.size() == 0:
 		return
 
-	var root = Vector2(rect.size.x / 2, rect.size.y + circle_center_offset)
-	var radius = Vector2(rect.size.y, rect.size.x * padding).distance_to(root)
-	
-	var angle = min(atan(child_size.x/2/radius)*2, deg2rad(max_angle))
+	var bow_width = rect.size.x * (.5 - padding) * 2
+	var bow_height = bow_spacing * rect.size.y
+	print(bow_width, " ", bow_height)
+	var radius = (4 * pow(bow_height, 2) + pow(bow_width, 2)) / (8 * bow_height)
+	var max_total_angle = 2 * asin(bow_width / (2 * radius))
+	#print((4*pow(bow_height,2)+pow(bow_width,2)))
+	var root = Vector2(rect.size.x / 2, rect.size.y - bow_height + radius)
+	var pad_point = Vector2(rect.size.x * padding, rect.size.y)
+	#var radius = pad_point.distance_to(root)
+	print(pad_point, root, radius)
 
-	var total_angle = (children.size()-1) * angle;
-	var current_angle = -total_angle/2
+	var wanted_angle = atan((child_size.x / 2) / radius) * 2
+	var angle = min(wanted_angle, deg2rad(max_angle))
+	print(angle, "<=", max_angle)
+	var total_angle = min((children.size() - 1) * angle, max_total_angle - wanted_angle)
+	angle = total_angle / (children.size() - 1)
+	var current_angle = -total_angle / 2
 	for child in children:
-		_put_child_at_angle(child,radius,root,current_angle)
+		_put_child_at_angle(child, radius, root, current_angle)
 		current_angle += angle
+
+
 #	var start_pos = Vector2(-(spacing / 2) - (spacing * ((float(array.size()) / 2) - 1)), 0)
 #	var cards = []
 #	var i = 0
@@ -53,14 +86,13 @@ func _resort():
 #		tween("rotation_degrees", c, rad2deg(c.rotation), start_rot + IH_CARD_ROT * i, animTime)
 #		i += 1
 
+
 func _put_child_at_angle(child: Control, radius, origin, angle):
-	var target = Vector2(0,-radius).rotated(angle) + origin
-	
-	
 	child.set_size(child_size)
 	child.set_rotation(angle)
-	child.rect_pivot_offset = Vector2(child_size.x/2,child_size.y)
-	
+	child.rect_pivot_offset = Vector2(child_size.x / 2, child_size.y)
+
+	var target = Vector2(0, -radius).rotated(angle) + origin - child.rect_pivot_offset
 	child.set_position(target)
 
 

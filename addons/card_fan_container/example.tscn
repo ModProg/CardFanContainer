@@ -12,11 +12,11 @@ border_width_bottom = 5
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
-anchor_bottom = 0.972
-margin_left = -22.2236
-margin_top = 6.3496
-margin_right = -22.2236
-margin_bottom = 6.34961
+anchor_bottom = 0.831
+margin_left = -20.6362
+margin_top = 5.5559
+margin_right = -20.6362
+margin_bottom = 5.55591
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,28 +40,116 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-max_angle = 6.031
-circle_center_offset = 1.0
-padding = 0.2
-child_size = Vector2( 80, 160 )
-
-[node name="Panel" type="Panel" parent="PanelContainer/CardFanContainer"]
-margin_right = 100.046
-margin_bottom = 200.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = SubResource( 2 )
+max_angle = 53.351
+bow_spacing = 0.131
+padding = 0.136
+child_size = Vector2( 100, 200 )
 
 [node name="Panel2" type="Panel" parent="PanelContainer/CardFanContainer"]
-margin_right = 100.0
-margin_bottom = 200.0
+margin_left = 85.2166
+margin_top = 99.6954
+margin_right = 185.217
+margin_bottom = 299.695
+rect_rotation = -15.7836
+rect_pivot_offset = Vector2( 50, 200 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 2 )
 
-[node name="Panel3" type="Panel" parent="PanelContainer/CardFanContainer"]
-margin_right = 100.0
-margin_bottom = 200.0
+[node name="Panel5" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 137.892
+margin_top = 87.0212
+margin_right = 237.892
+margin_bottom = 287.021
+rect_rotation = -11.274
+rect_pivot_offset = Vector2( 50, 200 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel6" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 191.4
+margin_top = 78.5279
+margin_right = 291.4
+margin_bottom = 278.528
+rect_rotation = -6.76439
+rect_pivot_offset = Vector2( 50, 200 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel8" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 245.411
+margin_top = 74.2681
+margin_right = 345.411
+margin_bottom = 274.268
+rect_rotation = -2.2548
+rect_pivot_offset = Vector2( 50, 200 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel7" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 299.589
+margin_top = 74.2681
+margin_right = 399.589
+margin_bottom = 274.268
+rect_rotation = 2.2548
+rect_pivot_offset = Vector2( 50, 200 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel10" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 353.6
+margin_top = 78.5279
+margin_right = 453.6
+margin_bottom = 278.528
+rect_rotation = 6.76439
+rect_pivot_offset = Vector2( 50, 200 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel11" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 407.108
+margin_top = 87.0212
+margin_right = 507.108
+margin_bottom = 287.021
+rect_rotation = 11.274
+rect_pivot_offset = Vector2( 50, 200 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="PanelContainer/CardFanContainer"]
+margin_left = 459.783
+margin_top = 99.6954
+margin_right = 559.783
+margin_bottom = 299.695
+rect_rotation = 15.7836
+rect_pivot_offset = Vector2( 50, 200 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
